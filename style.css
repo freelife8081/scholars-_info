@@ -1,0 +1,37 @@
+body {
+    font-size: 15pt;
+    background-color: mediumseagreen;
+}
+.btn{
+  color: white;
+  background-color: #ff4780;
+  text-decoration: none;
+  padding: 13px 42px;
+  border-radius: 20px;
+}
+.tbn{
+  color: #ff3438;
+  background-color: gold;
+  border-radius: 10%;
+  text-transform: uppercase;
+}
+.next{
+  background-color: darkkhaki;
+  padding: 20px 10px;
+  color: seagreen;
+}
+.home{
+  color: #43ff32;
+  background-color: red;
+  text-decoration: none;
+  padding: 1px 1px;
+  border-radius: 15px;
+}
+.but{
+  color: #34ff23;
+  background-color: gold;
+  text-decoration: none;
+  border-radius: 15px;
+  padding: 1px 1px;
+  float: right;
+}
