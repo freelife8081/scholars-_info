@@ -8,6 +8,7 @@ body {
   text-decoration: none;
   padding: 13px 42px;
   border-radius: 20px;
+  text-align: center;
 }
 .tbn{
   color: #ff3438;
@@ -33,5 +34,5 @@ body {
   text-decoration: none;
   border-radius: 15px;
   padding: 1px 1px;
-  text-align: center;
+  float: left;
 }
