@@ -5,44 +5,76 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <a class="home" href="index.html" target="_blank">Home</a>
-  <a class="but" href="about.html">About</a>
   <title>Scholar information</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
   <h1>Form created by Huska.</h1>
-  </p>
   <h2>Please enter all the information required.</h2>
   <hr>
+
+  <form id="scholarForm">
+    <p class="tbn">1: Enter your name</p>
+    <input type="text" id="name">
+    <p class="tbn">2: Select your gender</p>
+    <input type="checkbox" id="male"> Male
+    <input type="checkbox" id="female"> Female
+    <p class="tbn">3: Enter the name of your school</p>
+    <input type="text" id="school">
+    <p class="tbn"> 4: Select the county you come from.</p>
+    <p><input type="checkbox" id="mandera"> Mandera</p>
+    <p><input type="checkbox" id="garissa"> Garissa</p>
+    <p><input type="checkbox" id="wajir"> Wajir</p>
+    <p class="tbn">5: Choose your class</p>
+    <input type="checkbox" id="form1"> Form 1
+    <input type="checkbox" id="form2"> Form 2
+    <input type="checkbox" id="form3"> Form 3
+    <input type="checkbox" id="form4"> Form 4
+    <p class="tbn">6: Upload copy of the ID or Death certificate of your father</p>
+    <input type="file" id="fatherCertificate">
+    <p class="tbn">7: Upload copy of the ID or Death certificate of your mother</p>
+    <input type="file" id="motherCertificate">
+    <p class="tbn">8: Upload a copy of your Birth certificate</p>
+    <input type="file" id="birthCertificate">
+    <hr>
+    <p>Click the button below to submit</p>
+    <center><button class="btn" type="button" onclick="submitForm()">Submit</button></center>
+  </form>
+
+  <script>
+    function submitForm() {
+      // Gather form data
+      const name = document.getElementById("name").value;
+      const gender = document.getElementById("male").checked ? "Male" : document.getElementById("female").checked ? "Female" : "";
+      const school = document.getElementById("school").value;
+      const county = document.getElementById("mandera").checked ? "Mandera" : document.getElementById("garissa").checked ? "Garissa" : document.getElementById("wajir").checked ? "Wajir" : "";
+      const classes = [];
+      if (document.getElementById("form1").checked) classes.push("Form 1");
+      if (document.getElementById("form2").checked) classes.push("Form 2");
+      if (document.getElementById("form3").checked) classes.push("Form 3");
+      if (document.getElementById("form4").checked) classes.push("Form 4");
+      const fatherCertificate = document.getElementById("fatherCertificate").files[0];
+      const motherCertificate = document.getElementById("motherCertificate").files[0];
+      const birthCertificate = document.getElementById("birthCertificate").files[0];
+
+      // Prepare data for WhatsApp message
+      const message = `
+        Name: ${name}
+        Gender: ${gender}
+        School: ${school}
+        County: ${county}
+        Classes: ${classes.join(", ")}
+        Father Certificate: ${fatherCertificate ? fatherCertificate.name : ""}
+        Mother Certificate: ${motherCertificate ? motherCertificate.name : ""}
+        Birth Certificate: ${birthCertificate ? birthCertificate.name : ""}
+      `;
+
+      // Send message to WhatsApp
+      const whatsappURL = "https://wa.me/whatsappphonenumber?text=" + encodeURIComponent(message);
+      window.open(whatsappURL, "_blank");
+    }
+  </script>
 </body>
-  <h3 class="btn">Fill all inputs</h3>
-  <p class="tbn">1: Enter your name</p>
-  <input type="text">
-  <p class="tbn">2: Select your gender</p>
-  <input type="checkbox"> Male
-  <p class="tbn"></p>
-  <input type="checkbox">Female
-  <p class="tbn">3: Enter the name of your school</p>
-  <input type="text">
-  <p class="tbn"> 4: Select the county you come from.</p>
-  <p><input  type="checkbox">Mandera</p>
-  <p><input  type="checkbox">Garissa</p>
-  <p><input type="checkbox">Wajir</p>
-  <p class="tbn">5: Choose your class</p>
-  <input type="checkbox">Form 1
-  <input type="checkbox">Form 2
-  <input type="checkbox">Form 3
-  <input type="checkbox">Form 4
-  <p class="tbn">6: Upload copy of the ID or Death certificate of your father</p>
-  <input type="file" >
-  <p class="tbn">7: Upload copy of the ID or Death certificate of your mother</p>
-  <input type="file">
-  <p class="tbn">8: Upload a copy of your Birth certificate</p>
-  <input type="file">
-  <hr>
-  <p>Click the button below to submit</p>
-  <center><input class="btn" type="submit" value="Submit"></center>
-</form>
+
 </html>
