@@ -1,38 +1,55 @@
 body {
     font-size: 15pt;
-    background-color: mediumseagreen;
+    background-color: #f0f0f0; /* Light gray background */
+    font-family: Arial, sans-serif; /* Use Arial font */
 }
-.btn{
-  color: white;
-  background-color: #ff4780;
-  text-decoration: none;
-  padding: 13px 42px;
-  border-radius: 20px;
-  text-align: center;
+
+.btn {
+    color: white;
+    background-color: #ff4780; /* Pink button */
+    text-decoration: none;
+    padding: 12px 40px; /* Slightly smaller padding */
+    border-radius: 25px; /* Rounded corners */
+    text-align: center;
+    border: none; /* Remove border */
+    cursor: pointer; /* Show pointer cursor on hover */
+    transition: background-color 0.3s; /* Smooth color transition */
 }
-.tbn{
-  color: #ff3438;
-  background-color: gold;
-  border-radius: 10%;
-  text-transform: uppercase;
+
+.btn:hover {
+    background-color: #e63b6f; /* Darker pink on hover */
 }
-.next{
-  background-color: darkkhaki;
-  padding: 20px 10px;
-  color: seagreen;
+
+.tbn {
+    color: #ff3438;
+    background-color: #ffd700; /* Yellow background */
+    border-radius: 5px; /* Slightly rounded corners */
+    text-transform: uppercase;
+    padding: 5px 10px; /* Adjusted padding */
 }
-.home{
-  color: #43ff32;
-  background-color: red;
-  text-decoration: none;
-  padding: 1px 1px;
-  border-radius: 15px;
+
+.next {
+    background-color: #4caf50; /* Green button */
+    padding: 15px 20px; /* Adjusted padding */
+    color: white;
+    border-radius: 10px; /* Rounded corners */
+    text-decoration: none;
 }
-.but{
-  color: #34ff23;
-  background-color: gold;
-  text-decoration: none;
-  border-radius: 15px;
-  padding: 1px 1px;
-  float: left;
+
+.home {
+    color: #43ff32;
+    background-color: #ff1a1a; /* Red button */
+    text-decoration: none;
+    padding: 8px 15px; /* Adjusted padding */
+    border-radius: 20px; /* Rounded corners */
+}
+
+.but {
+    color: #34ff23;
+    background-color: #ffd700; /* Yellow button */
+    text-decoration: none;
+    border-radius: 20px; /* Rounded corners */
+    padding: 8px 15px; /* Adjusted padding */
+    float: left;
+    margin-right: 10px; /* Add some spacing between buttons */
 }
