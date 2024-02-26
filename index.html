@@ -54,10 +54,7 @@
       if (document.getElementById("form2").checked) classes.push("Form 2");
       if (document.getElementById("form3").checked) classes.push("Form 3");
       if (document.getElementById("form4").checked) classes.push("Form 4");
-      const fatherCertificate = document.getElementById("fatherCertificate").files[0];
-      const motherCertificate = document.getElementById("motherCertificate").files[0];
-      const birthCertificate = document.getElementById("birthCertificate").files[0];
-
+      
       // Prepare data for WhatsApp message
       const message = `
         Name: ${name}
@@ -65,13 +62,10 @@
         School: ${school}
         County: ${county}
         Classes: ${classes.join(", ")}
-        Father Certificate: ${fatherCertificate ? fatherCertificate.name : ""}
-        Mother Certificate: ${motherCertificate ? motherCertificate.name : ""}
-        Birth Certificate: ${birthCertificate ? birthCertificate.name : ""}
       `;
 
       // Send message to WhatsApp
-      const whatsappURL = "https://wa.me/whatsappphonenumber?text=" + encodeURIComponent(message);
+      const whatsappURL = "https://wa.me/+254791190745?text=" + encodeURIComponent(message);
       window.open(whatsappURL, "_blank");
     }
   </script>
