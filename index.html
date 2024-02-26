@@ -50,6 +50,12 @@
       if (document.getElementById("form3").checked) classes.push("Form 3");
       if (document.getElementById("form4").checked) classes.push("Form 4");
       
+      // Check if all required fields are filled
+      if (!name || !gender || !school || !county || classes.length === 0) {
+        alert("Please fill all the required fields");
+        return;
+      }
+
       // Prepare data for WhatsApp message
       const message = `
         Name: ${name}
