@@ -22,9 +22,13 @@
 
 <body>
   <audio id="myAudio">
-  <source src="tap.mp3" type="audio/mpeg">
-  Your browser does not support the audio element.
-</audio>
+    <source src="tap.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+  <audio id="errorAudio">
+    <source src="error.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
 
   <h1 style="color: white; background-color: blue;">Form Handler <p style="color: white; background-color: red;">Created by Huska</p></h1>
   <h2 style="color: white; background-color: black; font: san-serif; font-style: futura;">Please enter all the information required.</h2>
@@ -49,52 +53,58 @@
     <input type="checkbox" id="fin"> I hate money
     <input type="checkbox" id="fon"> I want to be poor
     <hr>
-    <p>Click the button below to submit</p>
-    <p><center>This will open WhatsApp and fill the data</center></p>
+    <p>Click the button to submit</p>
     <!-- Add an ID to the button for easy JavaScript targeting -->
     <center><button id="submitBtn" class="btn" type="button" onclick="submitForm()">Submit</button></center>
   </form>
 
   <script>
-    function submitForm() {
-  // Play the audio
-  var audio = document.getElementById("myAudio");
-  audio.play();
-
-  // Wait for 10 seconds before submitting the form
-  setTimeout(function() {
-    // Gather form data
-    const name = document.getElementById("name").value;
-    const gender = document.getElementById("male").checked ? "Male" : document.getElementById("female").checked ? "Female" : "";
-    const school = document.getElementById("yes").checked ? "Yes" : document.getElementById("no").checked ? "No" : "";
-    const county = document.getElementById("red").checked ? "Yes" : document.getElementById("green").checked ? "No" : document.getElementById("white").checked ? "I will think of it" : "";
-    const classes = [];
-    if (document.getElementById("fan").checked) classes.push("Yes");
-    if (document.getElementById("fen").checked) classes.push("No");
-    if (document.getElementById("fin").checked) classes.push("I hate money");
-    if (document.getElementById("fon").checked) classes.push("I want to be poor");
-
-    // Check if all required fields are filled
-    if (!name || !gender || !school || !county || classes.length === 0) {
-      alert("Hussein will receive no message since you have put nothing in the blank spaces. Go back and do it before Huska get angry! 😡😡😡😡😡");
-      return;
+    // Function to play an audio when required fields are not filled
+    function playErrorSound() {
+      var errorAudio = document.getElementById("errorAudio");
+      errorAudio.play();
     }
 
-    // Prepare data for WhatsApp message
-    const message = `
-      Name: ${name}
-      Gender: ${gender}
-      Heard of Crypto?: ${school}
-      Mine Crypto?: ${county}
-      Join Us?: ${classes.join(", ")}
-    `;
+    // Function to submit the form
+    function submitForm() {
+      // Play the audio
+      var audio = document.getElementById("myAudio");
+      audio.play();
 
-    // Send message to WhatsApp
-    const whatsappURL = "https://wa.me/+254791190745?text=" + encodeURIComponent(message);
-    window.open(whatsappURL, "_blank");
-  }, 10000); // 10 seconds
-}
+      // Wait for 10 seconds before submitting the form
+      setTimeout(function() {
+        // Gather form data
+        const name = document.getElementById("name").value;
+        const gender = document.getElementById("male").checked ? "Male" : document.getElementById("female").checked ? "Female" : "";
+        const school = document.getElementById("yes").checked ? "Yes" : document.getElementById("no").checked ? "No" : "";
+        const county = document.getElementById("red").checked ? "Yes" : document.getElementById("green").checked ? "No" : document.getElementById("white").checked ? "I will think of it" : "";
+        const classes = [];
+        if (document.getElementById("fan").checked) classes.push("Yes");
+        if (document.getElementById("fen").checked) classes.push("No");
+        if (document.getElementById("fin").checked) classes.push("I hate money");
+        if (document.getElementById("fon").checked) classes.push("I want to be poor");
 
+        // Check if all required fields are filled
+        if (!name || !gender || !school || !county || classes.length === 0) {
+          alert("Hussein will receive no message since you have put nothing in the blank spaces. Go back and do it before Huska get angry! 😡😡😡😡😡");
+          playErrorSound(); // Play error sound
+          return;
+        }
+
+        // Prepare data for WhatsApp message
+        const message = `
+          Name: ${name}
+          Gender: ${gender}
+          Heard of Crypto?: ${school}
+          Mine Crypto?: ${county}
+          Join Us?: ${classes.join(", ")}
+        `;
+
+        // Send message to WhatsApp
+        const whatsappURL = "https://wa.me/+254791190745?text=" + encodeURIComponent(message);
+        window.open(whatsappURL, "_blank");
+      }, 10000); // 10 seconds
+    }
   </script>
 </body>
 
