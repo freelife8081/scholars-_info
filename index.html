@@ -39,11 +39,11 @@
     <p class="tbn">3: Have you heard about Cryptocurrency?</p>
     <input type="checkbox" id="yes"> Yes
     <input type="checkbox" id="no"> No
-    <p class="tbn"> 4: Do you mine FREE crypto projects? (Yes/No)</p>
+    <p class="tbn"> 4: Mine Crypto?</p>
     <p><input type="checkbox" id="red"> Yes</p>
     <p><input type="checkbox" id="green"> No</p>
     <p><input type="checkbox" id="white"> I will think of it</p>
-    <p class="tbn">5: Would you like to join us in making money? (Yes/No)</p>
+    <p class="tbn">5: Join Us?</p>
     <input type="checkbox" id="fan"> Yes
     <input type="checkbox" id="fen"> No
     <input type="checkbox" id="fin"> I hate money
@@ -66,8 +66,8 @@
     // Gather form data
     const name = document.getElementById("name").value;
     const gender = document.getElementById("male").checked ? "Male" : document.getElementById("female").checked ? "Female" : "";
-    const school = document.getElementById("yes").value;
-    const county = document.getElementById("no").checked ? "Yes" : document.getElementById("no").checked ? "No";
+    const school = document.getElementById("yes").checked ? "Yes" : document.getElementById("no").checked ? "No" : "";
+    const county = document.getElementById("red").checked ? "Yes" : document.getElementById("green").checked ? "No" : document.getElementById("white").checked ? "I will think of it" : "";
     const classes = [];
     if (document.getElementById("fan").checked) classes.push("Yes");
     if (document.getElementById("fen").checked) classes.push("No");
@@ -75,7 +75,7 @@
     if (document.getElementById("fon").checked) classes.push("I want to be poor");
 
     // Check if all required fields are filled
-    if (!name || !gender || ! || !county || classes.length === 0) {
+    if (!name || !gender || !school || !county || classes.length === 0) {
       alert("Hussein will receive no message since you have put nothing in the blank spaces. Go back and do it before Huska get angry! 😡😡😡😡😡");
       return;
     }
@@ -85,7 +85,7 @@
       Name: ${name}
       Gender: ${gender}
       Heard of Crypto?: ${school}
-      Mine crypto?: ${county}
+      Mine Crypto?: ${county}
       Join Us?: ${classes.join(", ")}
     `;
 
