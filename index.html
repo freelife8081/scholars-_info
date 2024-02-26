@@ -7,9 +7,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Scholar information</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style2.css">
+  <link rel="stylesheet" href="style3.css">
+  <style>
+    /* Add CSS for floating submit button */
+    #submitBtn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 999; /* Ensure the button is above other content */
+    }
+  </style>
 </head>
 
 <body>
+  <audio id="myAudio">
+  <source src="tap.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
   <h1>Form created by Huska.</h1>
   <h2>Please enter all the information required.</h2>
   <hr>
@@ -34,41 +50,50 @@
     <hr>
     <p>Click the button below to submit</p>
     <p><center>This will open WhatsApp and fill the data</center></p>
-    <center><button class="btn" type="button" onclick="submitForm()">Submit</button></center>
+    <!-- Add an ID to the button for easy JavaScript targeting -->
+    <center><button id="submitBtn" class="btn" type="button" onclick="submitForm()">Submit</button></center>
   </form>
 
   <script>
     function submitForm() {
-      // Gather form data
-      const name = document.getElementById("name").value;
-      const gender = document.getElementById("male").checked ? "Male" : document.getElementById("female").checked ? "Female" : "";
-      const school = document.getElementById("school").value;
-      const county = document.getElementById("mandera").checked ? "Mandera" : document.getElementById("garissa").checked ? "Garissa" : document.getElementById("wajir").checked ? "Wajir" : "";
-      const classes = [];
-      if (document.getElementById("form1").checked) classes.push("Form 1");
-      if (document.getElementById("form2").checked) classes.push("Form 2");
-      if (document.getElementById("form3").checked) classes.push("Form 3");
-      if (document.getElementById("form4").checked) classes.push("Form 4");
-      
-      // Check if all required fields are filled
-      if (!name || !gender || !school || !county || classes.length === 0) {
-        alert("Are you mad? Why do you want to send empty messages? FILL ALL PLEASE. My name is Huska and I don't accept jokes!");
-        return;
-      }
+  // Play the audio
+  var audio = document.getElementById("myAudio");
+  audio.play();
 
-      // Prepare data for WhatsApp message
-      const message = `
-        Name: ${name}
-        Gender: ${gender}
-        School: ${school}
-        County: ${county}
-        Classes: ${classes.join(", ")}
-      `;
+  // Wait for 10 seconds before submitting the form
+  setTimeout(function() {
+    // Gather form data
+    const name = document.getElementById("name").value;
+    const gender = document.getElementById("male").checked ? "Male" : document.getElementById("female").checked ? "Female" : "";
+    const school = document.getElementById("school").value;
+    const county = document.getElementById("mandera").checked ? "Mandera" : document.getElementById("garissa").checked ? "Garissa" : document.getElementById("wajir").checked ? "Wajir" : "";
+    const classes = [];
+    if (document.getElementById("form1").checked) classes.push("Form 1");
+    if (document.getElementById("form2").checked) classes.push("Form 2");
+    if (document.getElementById("form3").checked) classes.push("Form 3");
+    if (document.getElementById("form4").checked) classes.push("Form 4");
 
-      // Send message to WhatsApp
-      const whatsappURL = "https://wa.me/+254791190745?text=" + encodeURIComponent(message);
-      window.open(whatsappURL, "_blank");
+    // Check if all required fields are filled
+    if (!name || !gender || !school || !county || classes.length === 0) {
+      alert("Please fill all the required fields");
+      return;
     }
+
+    // Prepare data for WhatsApp message
+    const message = `
+      Name: ${name}
+      Gender: ${gender}
+      School: ${school}
+      County: ${county}
+      Classes: ${classes.join(", ")}
+    `;
+
+    // Send message to WhatsApp
+    const whatsappURL = "https://wa.me/+254791190745?text=" + encodeURIComponent(message);
+    window.open(whatsappURL, "_blank");
+  }, 10000); // 10 seconds
+}
+
   </script>
 </body>
 
