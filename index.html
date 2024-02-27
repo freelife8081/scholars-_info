@@ -53,7 +53,8 @@
     <input type="checkbox" id="fin"> I hate money
     <input type="checkbox" id="fon"> I want to be poor
     <hr>
-    <p>Click the button to submit</p>
+    <p>Click the button below to submit</p>
+    <p><center>This will open WhatsApp and fill the data</center></p>
     <!-- Add an ID to the button for easy JavaScript targeting -->
     <center><button id="submitBtn" class="btn" type="button" onclick="submitForm()">Submit</button></center>
   </form>
@@ -105,6 +106,11 @@
         window.open(whatsappURL, "_blank");
       }, 10000); // 10 seconds
     }
+
+    // Check if JavaScript is enabled
+    window.onload = function() {
+      document.body.innerHTML += '<noscript><meta http-equiv="refresh" content="0;url=javascript-disabled.html"></noscript>';
+    };
   </script>
 </body>
 
