@@ -3,6 +3,7 @@ body {
     background-color: lightblue; /* Light blue background */
     font-family: Arial, sans-serif; /* Use Arial font */
     border-radius: 20px 15px;
+    radius: 20px 15px;
 }
 
 .btn {
